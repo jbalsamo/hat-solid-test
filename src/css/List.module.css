@@ -1,0 +1,6 @@
+div.item {
+  border: 3px solid gray;
+  padding: 5px;
+  justify-content: left;
+  margin: 5px;
+}
