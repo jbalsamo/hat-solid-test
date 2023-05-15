@@ -3,11 +3,18 @@ import styles from "../css/List.module.css";
 const ListItem = (props) => {
   return (
     <div class={styles.item}>
-      Region: {props.region}
+      <label>State: </label>
+      {props.item.statedesc}
       <br />
-      Period: {props.period}
+      <label>County: </label>
+      {props.item.countyname}
       <br />
-      immunization_measure: {props.im}
+      <label>Population: </label>
+      {props.item.totalpopulation}
+      <br />
+      <label>Cancer: </label>
+      {props.item.cancer_adjprev}
+      <br />
     </div>
   );
 };

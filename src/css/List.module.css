@@ -3,4 +3,10 @@ div.item {
   padding: 5px;
   justify-content: left;
   margin: 5px;
+  width: auto;
+}
+
+div.list {
+  display: grid;
+  grid-column: auto auto;
 }
