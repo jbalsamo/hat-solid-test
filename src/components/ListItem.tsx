@@ -2,7 +2,7 @@ import styles from "../css/List.module.css";
 
 const ListItem = (props) => {
   return (
-    <div class={styles.item}>
+    <div class={`${styles.item} grid-item`}>
       <label>State: </label>
       {props.item.statedesc}
       <br />

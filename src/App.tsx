@@ -4,6 +4,7 @@ import {
   createResource,
   createSignal,
 } from "solid-js";
+import { Portal } from "solid-js/web";
 
 import Header from "./components/Header";
 import List from "./components/List";
@@ -49,7 +50,7 @@ const fetchData = async () => {
 const [lrange, setLrange] = createSignal(0);
 const [hrange, setHrange] = createSignal(1);
 const [count, setCount] = createSignal(0);
-const [limit, setLimit] = createSignal(20);
+const [limit, setLimit] = createSignal(10);
 const [offset, setOffset] = createSignal(0);
 const [alldata] = createResource(fetchAllData);
 const [mydata, { refetch }] = createResource(fetchData);
@@ -73,6 +74,7 @@ const App: Component = () => {
           count={alldata().length}
         />
       </List>
+
       <Pagination
         offset={offset()}
         setOffset={setOffset}
