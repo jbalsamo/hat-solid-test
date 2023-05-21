@@ -9,4 +9,5 @@ div.item {
 div.list {
   display: grid;
   grid-template-columns: auto auto;
+  margin: 5px;
 }

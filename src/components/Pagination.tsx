@@ -7,8 +7,9 @@ const Pagination = (props) => {
       <Show when={props.offset >= props.limit}>
         <button>Prev</button>
       </Show>
+      {props.offset} {props.limit}
       <Show when={props.offset <= props.count}>
-        <button>Next</button>
+        <button onclick={props.setOffset(props.limit)}>Next</button>
       </Show>
     </div>
   );
