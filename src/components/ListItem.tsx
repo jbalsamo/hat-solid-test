@@ -4,9 +4,7 @@ const ListItem = (props) => {
   return (
     <div class={`${styles.item} grid-item`}>
       <label>State: </label>
-      {props.item.statedesc}
-      <br />
-      <label>County: </label>
+      {props.item.statedesc}&nbsp;&nbsp;&nbsp;&nbsp;<label>County: </label>
       {props.item.countyname}
       <br />
       <label>Population: </label>
@@ -14,7 +12,9 @@ const ListItem = (props) => {
       <br />
       <label>Cancer: </label>
       {props.item.cancer_adjprev}
-      <br />
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <label>Diabetes</label>
+      {props.item.diabetes_adjprev}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import {
   createEffect,
   createResource,
   createSignal,
+  onMount,
 } from "solid-js";
 import { Portal } from "solid-js/web";
 
@@ -18,10 +19,10 @@ const author = "Richard Lucente";
 const fetchAllData = async () => {
   try {
     const response = await fetch(
-      "https://chronicdata.cdc.gov/resource/i46a-9kgh.json"
+      "https://chronicdata.cdc.gov/resource/i46a-9kgh.json?$order=statedesc ASC&$limit=50000"
     );
     const data = await response.json();
-    console.log("AllData", data);
+    setCount(data.length);
     // Handle the retrieved datas
     return await data;
   } catch (error) {
@@ -33,15 +34,15 @@ const fetchAllData = async () => {
 const fetchData = async () => {
   try {
     const response = await fetch(
-      "https://chronicdata.cdc.gov/resource/i46a-9kgh.json?$offset=" +
-        offset() +
-        "&$limit=" +
-        limit()
+      "https://chronicdata.cdc.gov/resource/i46a-9kgh.json?$order=statedesc ASC&$limit=50000"
     );
     const data = await response.json();
+    setCount(data.length);
     console.log("Data", data);
     // Handle the retrieved datas
-    return await data;
+    const res = await data.slice(offset(), offset() + limit());
+    console.log(res);
+    return res;
   } catch (error) {
     // Handle any errors that occurred during the data retrieval
     throw error;
@@ -56,30 +57,26 @@ const [alldata] = createResource(fetchAllData);
 const [mydata, { refetch }] = createResource(fetchData);
 
 const App: Component = () => {
+  createEffect(() => {
+    console.log(offset());
+  });
   return (
     <div class={styles.App}>
       <Header />
-      <Search></Search>
+      <Search>
+        {offset()} {limit()} {count()}
+      </Search>
       <List
         data={mydata()}
         offset={offset()}
         limit={limit()}
         title="My Content"
-        author={author}
-      >
-        <Pagination
-          offset={offset()}
-          setOffset={setOffset}
-          limit={limit()}
-          count={alldata().length}
-        />
-      </List>
-
+      />
       <Pagination
         offset={offset()}
         setOffset={setOffset}
         limit={limit()}
-        count={alldata().length}
+        count={count()}
       />
     </div>
   );

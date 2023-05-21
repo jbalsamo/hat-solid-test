@@ -3,7 +3,7 @@ import ListItem from "../components/ListItem";
 import styles from "../css/List.module.css";
 
 const List = (props) => {
-  console.log(props);
+  // let page = await props.data.slice(props.offset, props.offset + props.limit);
   return (
     <div class={`${styles.list} grid-container`}>
       <For each={props.data}>{(record) => <ListItem item={record} />}</For>

@@ -4,10 +4,10 @@ const range: number[] = [];
 const Pagination = (props) => {
   return (
     <div>
-      <Show when={props.offset > props.limit}>
+      <Show when={props.offset >= props.limit}>
         <button>Prev</button>
       </Show>
-      <Show when={props.offset < props.limit}>
+      <Show when={props.offset <= props.count}>
         <button>Next</button>
       </Show>
     </div>
