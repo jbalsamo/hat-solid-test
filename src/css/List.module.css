@@ -1,0 +1,12 @@
+div.item {
+  border: 3px solid gray;
+  padding: 5px;
+  justify-content: left;
+  margin: 5px;
+  width: auto;
+}
+
+div.list {
+  display: grid;
+  grid-template-columns: auto auto;
+}
